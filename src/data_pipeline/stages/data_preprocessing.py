@@ -97,7 +97,6 @@ def convert_timestamps_to_strings(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The updated DataFrame with timestamps as strings.
     """
-    #df = df.copy()
     for col in df.select_dtypes(include=['datetime64[ns]',
                                          'datetime64',
                                          'timedelta64[ns]']).columns:
