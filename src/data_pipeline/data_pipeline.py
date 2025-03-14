@@ -6,8 +6,8 @@ Defines a data pipeline with the following stages:
 
 
 Future Improvements:
-    - Taipy Pipeline:
-    - Not using subprocess for database creation
+    - Taipy Pipeline (implement)
+    - Not using subprocess
 """
 
 import os
@@ -45,7 +45,7 @@ def write_data_to_database(df: pd.DataFrame) -> None:
     
     Creates the SQLite database if it does not already exist.
     """
-    
+
     if not os.path.exists(DATABASE_PATH):
         print(f"Creating {DATABASE_PATH}")
         subprocess.run(["python",
