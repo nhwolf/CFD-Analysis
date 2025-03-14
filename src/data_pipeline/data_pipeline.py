@@ -34,7 +34,6 @@ def transform_data(df: pd.DataFrame) -> pd.DataFrame:
     data_preprocessing.create_individual_pressure_component_columns(df)
     data_preprocessing.create_individual_velocity_component_columns(df)
     data_preprocessing.create_pressure_magnitude_column(df)
-    data_preprocessing.create_velocity_magnitude_column(df)
     data_preprocessing.create_lift_to_drag_ratio_column(df)
     data_preprocessing.convert_timestamps_to_strings(df)
     return df

@@ -54,21 +54,6 @@ def create_design_shape_config_column(df = pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def create_velocity_magnitude_column(df = pd.DataFrame) -> pd.DataFrame:
-    """Creates a column for velocity magnitude,
-    total speed considering all three velocity components (x, y, z),
-    computed with the Euclidean norm. I.e., speed.
-
-    TO-DO: add checks for velocity component columns
-    TO-DO: add specific error handling
-    """
-    df['velocity_magnitude'] = np.sqrt(
-        df['velocity_x']**2 +
-        df['velocity_y']**2 +
-        df['velocity_z']**2)
-    return df
-
-
 def create_pressure_magnitude_column(df = pd.DataFrame) -> pd.DataFrame:
     """Creates a column for pressure "magnitude",
     not really a true magnitude since pressure is a scalar quantity
