@@ -19,3 +19,17 @@ $ source .venv/bin/activate
 
 ### 4 - Install Required Dependencies
 Use the provided requirements.txt file to install project dependencies: `pip install -r requirements.txt`.
+
+## Running tests with pytest
+The `pytest.ini` configures pytest such that users can run the test files in the `test/` directory from
+the root directory of the project.
+
+### Troubleshooting
+If you have multiple python versions on your system, you may encounter errors when running tests
+from the virtual environment after initial activation. Deactivating and Reactivating the virual
+environment usually fixes this.
+
+From the terminal in the workspace directory:
+```bash
+$ deactivate && source venv/bin/activate
+```
