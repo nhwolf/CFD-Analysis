@@ -38,7 +38,6 @@ def create_table(conn: sqlite3.Connection) -> None:
         pressure_top REAL NOT NULL,
         pressure_bottom REAL NOT NULL,
         design_shape_config TEXT NOT NULL,
-        velocity_magnitude REAL NOT NULL,
         pressure_magnitude REAL NOT NULL,
         L_D_ratio REAL NOT NULL
     );
