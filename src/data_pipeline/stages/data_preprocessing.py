@@ -98,3 +98,23 @@ def create_lift_to_drag_ratio_column(df = pd.DataFrame) -> pd.DataFrame:
     """
     df['L_D_ratio'] = df['total_lift'] / df['total_drag']
     return df
+
+
+def convert_timestamps_to_strings(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Converts all timestamp columns in a Pandas DataFrame to string format.
+
+    Rationale: SQLite does not directly support Pandas Timestamp objects.
+    
+    Args:
+        df (pd.DataFrame): The input DataFrame.
+    
+    Returns:
+        pd.DataFrame: The updated DataFrame with timestamps as strings.
+    """
+    #df = df.copy()
+    for col in df.select_dtypes(include=['datetime64[ns]',
+                                         'datetime64',
+                                         'timedelta64[ns]']).columns:
+        df[col] = df[col].astype(str)
+    return df
