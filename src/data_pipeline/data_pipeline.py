@@ -15,9 +15,9 @@ import subprocess
 import sqlite3
 import pandas as pd
 
-from stages import data_ingestion
-from stages import data_preprocessing
-from stages import data_write
+from stage_utils import data_ingestion
+from stage_utils import data_preprocessing
+from stage_utils import data_write
 
 
 DATABASE_PATH = "src/database/cfd_data.db"
