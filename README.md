@@ -27,7 +27,7 @@ the root directory of the project.
 ### Troubleshooting
 If you have multiple python versions on your system, you may encounter errors when running tests
 from the virtual environment after initial activation. Deactivating and Reactivating the virual
-environment usually fixes this.
+environment usually fixes this issue.
 
 From the terminal in the workspace directory:
 ```bash
