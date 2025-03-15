@@ -6,6 +6,7 @@ CFD simulation data.
 import os
 import sqlite3
 
+
 def create_database(database_path: str) -> sqlite3.Connection:
     """
     Creates SQLite database
@@ -48,7 +49,7 @@ def create_table(conn: sqlite3.Connection) -> None:
 
 def main() -> None:
     """Creates database and table."""
-    
+
     database_name = "cfd_data.db"
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -62,6 +63,7 @@ def main() -> None:
         create_table(conn)
         conn.close()
         print(f"{database_name} created")
+
 
 if __name__ == "__main__":
     main()
