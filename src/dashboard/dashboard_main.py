@@ -47,6 +47,7 @@ with tgb.Page() as data_table_page:
                 dropdown=True,
                 multiple=True,
                 label="Select Design",
+                hover_text="Filter table by design"
             )
             tgb.selector(
                 value="{selected_shapes}",
@@ -55,6 +56,7 @@ with tgb.Page() as data_table_page:
                 dropdown=True,
                 multiple=True,
                 label="Select Shape",
+                hover_text="Filter table by design"
             )
     with tgb.part(class_name="container"):
         tgb.html("br")
