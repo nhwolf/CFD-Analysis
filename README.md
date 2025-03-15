@@ -1,6 +1,8 @@
 # CFD-Analysis
 A Python application designed to display Computational Fluid Dynamics (CFD) simulations for a mock aircraft.
 
+__Note__: This app was built with Python version 3.12.9, other versions are not tested nor guranteed to work as expected.
+
 ## Running the app locally
 #### 1 - Clone this repo
 
