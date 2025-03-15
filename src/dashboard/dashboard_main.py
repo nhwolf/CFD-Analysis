@@ -4,12 +4,11 @@ Main dashboard file to render the dashboard data
 
 
 import pandas as pd
-from taipy.gui import Gui
+from taipy.gui import Gui, State
 import taipy.gui.builder as tgb
 from data_utils.sqlite_interface import SQLiteInterface
 from data_utils import queries
 from data_utils.database_path import DATABASE_PATH
-
 
 with SQLiteInterface(DATABASE_PATH) as sqlite_database:
     cfd_df = sqlite_database.get_data(queries.GET_ALL_CFD_DATA)
@@ -17,39 +16,45 @@ with SQLiteInterface(DATABASE_PATH) as sqlite_database:
 designs = cfd_df["design"].unique().tolist()
 shapes = cfd_df["shape_id"].unique().tolist()
 
-'''
-def filter_by_design(state):
-    state.data = cfd_df[cfd_df["design"] == state.selected_design]
-    state.chart_date = (
-        state.data
-    )'
-'''
+# Initialize state variables
+selected_designs = []
+selected_shapes = []
+filtered_df = cfd_df.copy()
 
+# Filtering function
+def filter_data(state: State):
+    df = cfd_df.copy()  # Work with a fresh copy of the data
 
+    if state.selected_designs:  # Only apply filter if selection exists
+        df = df[df["design"].isin(state.selected_designs)]
+
+    if state.selected_shapes:  # Only apply filter if selection exists
+        df = df[df["shape_id"].isin(state.selected_shapes)]
+
+    state.filtered_df = df  # Update the state
 
 with tgb.Page() as data_table_page:
     with tgb.part(class_name="container"):
         tgb.text("# **Simulation Data**", mode="md")
         tgb.selector(
-            value="{designs}",
+            value="{selected_designs}",
             lov=designs,
-            #on_change=filter_by_design,
+            on_change=filter_data,
             dropdown=True,
             multiple=True,
-            label="Select Design"
+            label="Select Design",
         )
         tgb.selector(
-            value="{shapes}",
+            value="{selected_shapes}",
             lov=shapes,
-            #on_change=filter_by_shape,
+            on_change=filter_data,
             dropdown=True,
             multiple=True,
-           label="Select Shape"
+            label="Select Shape",
         )
     with tgb.part(class_name="container"):
         tgb.html("br")
-        tgb.table(data="{cfd_df}")
-
+        tgb.table(data="{filtered_df}")
 
 if __name__ == "__main__":
     Gui(page=data_table_page).run(
@@ -57,6 +62,6 @@ if __name__ == "__main__":
         use_reloader=True,
         port="auto",
         debug=True,
-        watermark="", # removes watermark
-        margin="4em"
+        watermark="",
+        margin="4em",
     )
