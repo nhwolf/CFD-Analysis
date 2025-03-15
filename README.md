@@ -23,8 +23,8 @@ From the terminal in the workspace directory (i.e., "CFD-Analysis") run `data_pi
 $ python src/data_pipeline/data_pipeline.py
 ```
 This reads in data from the source json, creates a SQLite3 database in `src/database/`,
-and populates a database table with the data from the source json.
-__Note__: The data pipeline on needs to be run once for the initial setup. It is only
+and populates a database table with the data from the source json.  
+__Note__: The data pipeline only needs to be run once for the initial setup. It is only
 necessary to run again if the source data has changed.
 
 #### 5 - Start the Dashboard App
@@ -32,8 +32,6 @@ From the terminal in the workspace directory (i.e., "CFD-Analysis") run `dashboa
 ```bash
 $ python src/dashboard/dashboard_main.py
 ```
-This reads in data from the source json, creates a SQLite3 database in `src/database/`,
-and populates a database table with the data from the source json.
 
 ## Setting up a Development Environment
 #### 1 - Install Python 3.12
