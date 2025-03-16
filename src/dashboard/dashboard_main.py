@@ -6,10 +6,12 @@ from taipy.gui import Gui
 from pages.home import homepage
 from pages.data_table import data_table_page
 
+
 root_md = """
 <|navbar|>
 <|content|>
 """
+
 
 pages = {
     "/": root_md,

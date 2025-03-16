@@ -7,19 +7,16 @@ import taipy.gui.builder as tgb
 from data_utils.sqlite_interface import SQLiteInterface
 from data_utils import queries
 from data_utils.database_path import DATABASE_PATH
-
-
-with SQLiteInterface(DATABASE_PATH) as sqlite_database:
-    cfd_df = sqlite_database.get_data(queries.GET_ALL_CFD_DATA)
+from data_utils.get_data import CFD_DF
 
 
 # Data Source Information
-num_simulations = cfd_df["simulation_id"].nunique()
-unique_design_count = cfd_df["design"].nunique()
-unique_shape_count = cfd_df["shape_id"].nunique()
-unique_design_shape_combinations = cfd_df["design_shape_config"].nunique()
-min_simulation_date = pd.to_datetime(cfd_df["date"]).min().date()
-max_simulation_date = pd.to_datetime(cfd_df["date"]).max().date()
+num_simulations = CFD_DF["simulation_id"].nunique()
+unique_design_count = CFD_DF["design"].nunique()
+unique_shape_count = CFD_DF["shape_id"].nunique()
+unique_design_shape_combinations = CFD_DF["design_shape_config"].nunique()
+min_simulation_date = pd.to_datetime(CFD_DF["date"]).min().date()
+max_simulation_date = pd.to_datetime(CFD_DF["date"]).max().date()
 
 
 # Page definition

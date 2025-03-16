@@ -6,30 +6,24 @@ import pandas as pd
 import taipy.gui.builder as tgb
 from taipy.gui import State, download
 import pandas as pd
-from data_utils.sqlite_interface import SQLiteInterface
-from data_utils import queries
-from data_utils.database_path import DATABASE_PATH
-
-
-with SQLiteInterface(DATABASE_PATH) as sqlite_database:
-    cfd_df = sqlite_database.get_data(queries.GET_ALL_CFD_DATA)
+from data_utils.get_data import CFD_DF
 
 
 # Unique values for designs and shapes
-designs = cfd_df["design"].unique().tolist()
-shapes = cfd_df["shape_id"].unique().tolist()
+designs = CFD_DF["design"].unique().tolist()
+shapes = CFD_DF["shape_id"].unique().tolist()
 
 
 # Initialize state variables
 selected_designs = designs.copy()
 selected_shapes = shapes.copy()
-filtered_df = cfd_df.copy()
+filtered_df = CFD_DF.copy()
 download_csv_path = None
 
 
 def filter_data(state: State):
     """Filter data based on selected designs and shapes."""
-    df = cfd_df.copy()
+    df = CFD_DF.copy()
 
     if state.selected_designs:
         df = df[df["design"].isin(state.selected_designs)]
