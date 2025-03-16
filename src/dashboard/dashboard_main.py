@@ -17,10 +17,11 @@ pages = {
     "CFD-Dataset": data_table_page
 }
 
+
 if __name__ == "__main__":
 
     Gui(pages=pages).run(
-        title="CFD Dashboard",
+        title="Aircraft CFD Dashboard",
         use_reloader=True,
         port="auto",
         debug=True,
