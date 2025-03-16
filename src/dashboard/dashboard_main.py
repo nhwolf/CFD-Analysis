@@ -1,5 +1,5 @@
 """
-Main dashboard file to render the dashboard data
+Main dashboard file to render the dashboard.
 """
 
 from taipy.gui import Gui
