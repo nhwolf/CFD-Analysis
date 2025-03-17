@@ -173,5 +173,3 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# SQLite database file
-cfd_data.db
