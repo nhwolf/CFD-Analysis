@@ -47,7 +47,7 @@ def plot_scatter(
     fig.update_traces(marker=dict(opacity=0.7,
                                   line=dict(width=1,
                                             color="DarkSlateGrey")))
-    fig.update_layout(xaxis_title=x_col, yaxis_title=y_col)
+    fig.update_layout(xaxis_title="Total Drag", yaxis_title="Total Lift")
     return fig
 
 

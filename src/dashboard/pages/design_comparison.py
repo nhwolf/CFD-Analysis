@@ -1,5 +1,5 @@
 """
-Data Table page for dashboard.
+Design comparison page for the dashboard.
 """
 
 import taipy.gui.builder as tgb
