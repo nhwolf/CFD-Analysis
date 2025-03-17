@@ -4,6 +4,7 @@ Home page for dashboard.
 
 import pandas as pd
 import taipy.gui.builder as tgb
+from taipy.gui import State
 from data_utils.sqlite_interface import SQLiteInterface
 from data_utils import queries
 from data_utils.database_path import DATABASE_PATH
@@ -24,7 +25,7 @@ with tgb.Page() as homepage:
     tgb.text(value ="# Computational Fluid Dynamics Data Analysis",
              mode="md")
 
-    tgb.toggle(theme=True) # Light/Dark mode toggle
+    tgb.toggle(theme=False) # Light/Dark mode toggle
 
     with tgb.part(class_name="container", columns="1 1 1"):
         with tgb.layout("1 1 1", class_name="pb1"):

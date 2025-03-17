@@ -2,7 +2,6 @@
 Data Table page for dashboard.
 """
 
-import pandas as pd
 import taipy.gui.builder as tgb
 from taipy.gui import State, download
 import pandas as pd
