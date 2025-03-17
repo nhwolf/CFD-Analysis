@@ -4,7 +4,6 @@ Data Table page for dashboard.
 
 import taipy.gui.builder as tgb
 from taipy.gui import State, download
-import pandas as pd
 from data_utils.get_data import CFD_DF
 
 

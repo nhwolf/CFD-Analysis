@@ -1,5 +1,11 @@
 """
 Module to provide functions for common plotting/figure generation.
+
+Future Improvements:
+    - Add more plot types (e.g., line plots, bar plots, etc.)
+    - Add more customization options (e.g., axis labels, titles, etc.)
+    - Add more documentation to the functions
+    - Converted to a class for more flexibility and customization
 """
 
 import pandas as pd
@@ -42,7 +48,6 @@ def plot_scatter(
                                   line=dict(width=1,
                                             color="DarkSlateGrey")))
     fig.update_layout(xaxis_title=x_col, yaxis_title=y_col)
-
     return fig
 
 
@@ -72,7 +77,7 @@ def plot_facet_grid(df: pd.DataFrame,
         y=y_col,
         color=color_col,
         facet_col=facet_col,
-        color_continuous_scale='Set1',  # Choose the color palette
+        color_continuous_scale='Set1',
         opacity=0.7
     )
 
@@ -90,6 +95,46 @@ def plot_facet_grid(df: pd.DataFrame,
         legend=dict(title="Shape", x=0.02, y=1.2, orientation="h"),
         template="plotly_white"
     )
-
     return fig
 
+
+def plot_line_over_time(df: pd.DataFrame, 
+                                  date_col: str, 
+                                  y_col: str, 
+                                  group_col: str) -> go.Figure:
+    """
+    Creates a line plot with the given date column on the x-axis, L/D ratio on the y-axis, 
+    and separate lines colored by a third grouping column. The legend is always shown.
+
+    Parameters:
+        df (pd.DataFrame): The dataframe containing the data.
+        date_col (str): The column name for the x-axis (Date).
+        y_col (str): The column name for the y-axis (L/D Ratio).
+        group_col (str): The column name to group and color the lines (e.g., Shape or Design).
+
+    Returns:
+        plotly.graph_objects.Figure: The line plot figure.
+    """
+    # Ensure the date column is in datetime format
+    df[date_col] = pd.to_datetime(df[date_col])
+
+    # Create a line plot with color grouping based on the group_col
+    fig = px.line(
+        df,
+        x=date_col,
+        y=y_col,
+        color=group_col,
+        labels={date_col: 'Date', y_col: 'Lift-to-Drag Ratio (L/D)', group_col: group_col}
+    )
+    fig.update_traces(mode='lines+markers',
+                      marker=dict(size=8,
+                                line=dict(width=1,
+                                color='DarkSlateGrey')))
+    fig.update_layout(
+        xaxis_title="Date",
+        yaxis_title="Lift-to-Drag Ratio (L/D)",
+        template="plotly_white",
+        showlegend=True,
+        legend_title=None
+    )
+    return fig
