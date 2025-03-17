@@ -1,0 +1,1 @@
+web: python src/dashboard/dashboard_main.py -H 0.0.0.0 -P $PORT
