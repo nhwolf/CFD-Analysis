@@ -65,5 +65,5 @@ environment usually fixes this issue.
 
 From the terminal in the workspace directory:
 ```bash
-$ deactivate && source venv/bin/activate
+$ deactivate && source .venv/bin/activate
 ```
